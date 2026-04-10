@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #FAFAF8;
+  --color-foreground: #1A1A1A;
+  --color-sage-50: #F2F5F0;
+  --color-sage-100: #E4EBE0;
+  --color-sage-200: #C9D7C1;
+  --color-sage-300: #ADBFA2;
+  --color-sage-400: #8FA882;
+  --color-sage-500: #6B8F5B;
+  --color-sage-600: #557349;
+  --color-sage-700: #405737;
+  --color-sage-800: #2B3A25;
+  --color-sage-900: #151D12;
+
+  --color-citrus-50: #FFF8ED;
+  --color-citrus-100: #FFF0D4;
+  --color-citrus-200: #FFDDA8;
+  --color-citrus-300: #FFC470;
+  --color-citrus-400: #FFA836;
+  --color-citrus-500: #FF8C0A;
+  --color-citrus-600: #E67300;
+  --color-citrus-700: #BF5A02;
+  --color-citrus-800: #994708;
+  --color-citrus-900: #7A3A0B;
+
+  --color-glass-white: rgba(255, 255, 255, 0.65);
+  --color-glass-border: rgba(255, 255, 255, 0.3);
+  --color-glass-shadow: rgba(0, 0, 0, 0.05);
+  
+  --color-card: #FFFFFF;
+  --color-muted: #94A3B8;
+  --color-muted-foreground: #64748B;
+  --color-border: #E2E8F0;
+
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage-200);
+  border-radius: 999px;
+}
+
+/* Progress ring animation */
+@keyframes progress-ring {
+  from {
+    stroke-dashoffset: var(--ring-circumference);
+  }
+  to {
+    stroke-dashoffset: var(--ring-offset);
+  }
+}
+
+.animate-progress-ring {
+  animation: progress-ring 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--color-glass-white);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 4px 24px var(--color-glass-shadow);
+}
+
+/* Shimmer for skeleton loading */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
